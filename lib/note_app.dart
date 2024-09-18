@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/NotesCubit/notes_cubit.dart';
+import 'package:notes_app/NotesCubit/notes_state.dart';
 import 'package:notes_app/widgets/note_item.dart';
 
 import 'models/note_model.dart';
@@ -66,17 +67,18 @@ class NoteAppWithoutStateManagement extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
       ),
       body:
-          BlocBuilder<NotesCubit,List<Note>>(
+          BlocBuilder<NotesCubit,NotesState>(
             builder: (context, state){
-              if(state.isEmpty){
+              if(state is NotesInitialState){
                 return const Center(child: Text('No Notes Available'));
               }
               else{
+                List<Note> list = (state as NotesLoadedState).list;
              return   ListView.builder(
                         padding: const EdgeInsets.all(10),
-                        itemCount: state.length,
+                        itemCount: list.length,
                         itemBuilder: (context, index) {
-                          final note = state[index];
+                          final note = list[index];
                           return NoteItem(
                               title: note.title,
                               content: note.content,
