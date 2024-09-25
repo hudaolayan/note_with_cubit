@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notes_app/NotesCubit/notes_cubit.dart';
-import 'package:notes_app/NotesCubit/notes_state.dart';
 import 'package:notes_app/widgets/note_item.dart';
 
 import 'models/note_model.dart';
+import 'notes_cubit/notes_cubit.dart';
+import 'notes_cubit/notes_state.dart';
 
-class NoteAppWithoutStateManagement extends StatelessWidget {
-   NoteAppWithoutStateManagement({super.key});
+class NoteAppWithStateManagement extends StatelessWidget {
+   NoteAppWithStateManagement({super.key});
 
 
 
